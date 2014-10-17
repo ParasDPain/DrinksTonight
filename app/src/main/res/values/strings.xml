@@ -2,12 +2,15 @@
 <resources>
 
     <string name="app_name">Drinks Tonight</string>
-    <string name="intro">Press the button before each drink!</string>
+    <string name="intro">Press the button after each drink!</string>
     <string name="action_settings">Settings</string>
     <string name="button_main">Drink!</string>
     <string name="button_result">How many have I had so far?</string>
     <string name="title_activity_view_results">Rap Sheet</string>
     <string name="button_new">New session</string>
     <string name="button_reset">Reset Sessions</string>
+    <string name="action_siren">Status</string>
+    <string name="prefText">Drinks Count</string>
+    <string name="preference_count_file">Count Data</string>
 
 </resources>

@@ -4,13 +4,7 @@
 
     <item xmlns:android="http://schemas.android.com/apk/res/android">
         <shape android:shape="oval" >
-            <stroke
-                android:height="1dip"
-                android:width="1dip"
-                android:color="#ff81ee83" />
-
-            <solid android:color="#ff81ee83" />
-
+            <solid android:color="#ffdfdfdf" />
             <corners
                 android:bottomLeftRadius="45dip"
                 android:bottomRightRadius="45dip"
