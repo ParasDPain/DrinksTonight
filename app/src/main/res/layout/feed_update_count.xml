@@ -6,6 +6,7 @@
     android:minWidth="32dp"
     android:minHeight="32dp"
     android:background="@drawable/shape_siren"
+    android:onClick="buttonResultPass"
     android:text="0"
     android:textSize="16sp"
     android:textColor="@android:color/black"

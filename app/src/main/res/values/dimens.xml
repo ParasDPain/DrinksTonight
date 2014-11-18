@@ -5,4 +5,5 @@
     <dimen name="activity_title_text">18sp</dimen>
     <dimen name="activity_btn_text">30sp</dimen>
     <dimen name="activity_custom_margin">10dp</dimen>
+    <dimen name="activity_textview_margin">0dp</dimen>
 </resources>

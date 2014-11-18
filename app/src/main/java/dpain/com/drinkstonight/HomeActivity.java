@@ -17,43 +17,12 @@ public class HomeActivity extends Activity {
 
     //public variables
     public final static String ARRAY_COUNTER = "dpain.com.drinkstonight.COUNTER";
-    static Button notifCount;
+    public Button notifCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-    }
-
-    //count each button press
-    //Updates settings bar to displays the updated count
-    //Vibrates
-    public void buttonOnClick(View view) {
-        SharedPreferences pref = this.getSharedPreferences(getString(R.string.preference_count_file),0);
-        SharedPreferences.Editor prefEdit = pref.edit();
-
-        int counter = pref.getInt(getString(R.string.prefText), 0);
-        counter += 1;
-        invalidateOptionsMenu();
-
-        prefEdit.putInt(getString(R.string.prefText), counter);
-        prefEdit.commit();
-
-        vibrate(20);
-    }
-
-    //Vibration on Click function
-    public void vibrate(int duration)
-    {
-        Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        vibe.vibrate(duration);
-    }
-
-    //Pass an intent with the current count value and start the activity
-    public void buttonResultPass(View view) {
-        Intent intent = new Intent(this, ViewResults.class);
-        intent.putExtra(ARRAY_COUNTER, 0);
-        startActivity(intent);
     }
 
 
@@ -64,13 +33,14 @@ public class HomeActivity extends Activity {
         inflater.inflate(R.menu.home, menu);
 
         //Retrieves value from file to display else displays the current value
-        int displayCount = 0;
+        int displayCount;
         SharedPreferences pref = this.getSharedPreferences(getString(R.string.preference_count_file),0);
         displayCount = pref.getInt(getString(R.string.prefText), 0);
 
         View count = menu.findItem(R.id.action_siren).getActionView();
         notifCount = (Button) count.findViewById(R.id.notif_count);
         notifCount.setText(String.valueOf(displayCount));
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -86,4 +56,60 @@ public class HomeActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        invalidateOptionsMenu();
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    //count each button press
+    //Updates settings bar to displays the updated count
+    //Vibrates
+    public void buttonOnClick(View view) {
+        SharedPreferences pref = getSharedPreferences(getString(R.string.preference_count_file),0);
+        SharedPreferences.Editor prefEdit = pref.edit();
+
+        int counter = pref.getInt(getString(R.string.prefText), 0);
+        counter += 1;
+        invalidateOptionsMenu();
+
+        prefEdit.putInt(getString(R.string.prefText), counter);
+        prefEdit.apply();
+
+        vibrate();
+
+        Intent notifier = new Intent(this, ViewResults.class);
+
+        //Check count and open new Activity as per condition
+        if (counter==10) {
+            startActivity(notifier);
+        }else if (counter==20) {
+            startActivity(notifier);
+        }else if (counter==40) {
+            startActivity(notifier);
+        }else if (counter==100) {
+            startActivity(notifier);
+        }
+    }
+
+    public static void refresh(Activity activity)
+    {
+        activity.invalidateOptionsMenu();
+    }
+
+    //Vibration on Click function
+    void vibrate()
+    {
+        Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        vibe.vibrate(20);
+    }
+
+    //Pass an intent with the current count value and start the activity
+    // Important for the feed counter
+    public void buttonResultPass(View view) {
+        Intent intent = new Intent(this, ViewResults.class);
+        startActivity(intent);
+    }
+
 }

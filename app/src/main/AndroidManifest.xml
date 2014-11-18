@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="dpain.com.drinkstonight" >
 
-    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -20,7 +20,8 @@
         <activity
             android:name=".ViewResults"
             android:label="@string/title_activity_view_results"
-            android:parentActivityName=".HomeActivity" >
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="dpain.com.drinkstonight.HomeActivity" />

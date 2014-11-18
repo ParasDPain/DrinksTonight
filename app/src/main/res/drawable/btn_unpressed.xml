@@ -4,13 +4,16 @@
 
     <item xmlns:android="http://schemas.android.com/apk/res/android">
         <shape android:shape="oval" >
-        <solid android:color="#ffffffff" />
-            <corners
-                android:bottomLeftRadius="45dip"
-                android:bottomRightRadius="45dip"
-                android:radius="45dip"
-                android:topLeftRadius="45dip"
-                android:topRightRadius="45dip" />
+        <!--<solid android:color="#ffffffff" /> -->
+        <corners
+               android:bottomLeftRadius="45dip"
+               android:bottomRightRadius="45dip"
+               android:radius="45dip"
+               android:topLeftRadius="45dip"
+               android:topRightRadius="45dip" />
+            <stroke
+                android:width="3dp"
+                android:color="#ffffffff" />
         </shape>
 
     </item>
